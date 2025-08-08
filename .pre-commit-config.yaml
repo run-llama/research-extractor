@@ -1,0 +1,23 @@
+# .pre-commit-config.yaml
+repos:
+  # General hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: check-yaml
+      - id: check-case-conflict
+      - id: check-merge-conflict
+      - id: check-json
+      - id: pretty-format-json
+        args: ['--autofix']
+
+  # Additional nextjs checks
+  - repo: local
+    hooks:
+      - id: lint
+        name: npm lint
+        entry: npm run lint
+        language: system
+        pass_filenames: false
